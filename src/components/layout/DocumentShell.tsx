@@ -1,7 +1,8 @@
 import { GoogleTagManager } from "@next/third-parties/google";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Geist } from "next/font/google";
+// Platform analytics stripped for AI Studio environment
+const Analytics = () => null;
+const SpeedInsights = () => null;
+import { Geist, Plus_Jakarta_Sans } from "next/font/google";
 import { Suspense } from "react";
 import { localeDirection } from "@/i18n/locales";
 
@@ -20,6 +21,13 @@ const geist = Geist({
   variable: "--font-geist",
   subsets: ["latin"],
   display: "swap",
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-display",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["500", "600", "700", "800"],
 });
 
 interface DocumentShellProps {
@@ -62,7 +70,7 @@ export function DocumentShell({ children, locale }: DocumentShellProps) {
       </head>
       {gtmId && <GoogleTagManager gtmId={gtmId} />}
       <body
-        className={`${geist.variable} antialiased min-h-screen flex flex-col`}
+        className={`${geist.variable} ${plusJakarta.variable} font-sans antialiased min-h-screen flex flex-col bg-[#faf9f6] text-neutral-900`}
       >
         <Suspense fallback={null}>{children}</Suspense>
         <Analytics />

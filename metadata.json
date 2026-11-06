@@ -1,0 +1,6 @@
+{
+  "name": "FreeFalastin Shop",
+  "description": "Next.js Spree storefront for clothing, kufiyas, and art supporting Palestine.",
+  "requestFramePermissions": [],
+  "capabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

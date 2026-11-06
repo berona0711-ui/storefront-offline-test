@@ -31,7 +31,7 @@ export function getStoreUrl(): string {
     process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL;
   if (raw) return ensureProtocol(raw);
   return process.env.NODE_ENV === "development"
-    ? "http://localhost:3001"
+    ? "http://localhost:3000"
     : "https://freefalastin.de";
 }
 

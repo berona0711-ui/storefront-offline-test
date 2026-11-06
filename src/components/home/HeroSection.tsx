@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowRight, ShieldCheck, Heart, Truck, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { HeroVideoPlayer } from "@/components/home/HeroVideoPlayer";
 
 interface HeroSectionProps {
   basePath: string;
@@ -9,83 +10,111 @@ interface HeroSectionProps {
 
 export async function HeroSection({ basePath }: HeroSectionProps) {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-emerald-950 via-neutral-900 to-neutral-950 text-white py-16 md:py-24 border-b border-neutral-800">
-      {/* Decorative background glow & pattern */}
-      <div className="absolute inset-0 pointer-events-none opacity-20">
-        <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-[#005c2e] blur-3xl" />
-        <div className="absolute top-1/2 -right-32 w-96 h-96 rounded-full bg-[#e01b33] blur-3xl opacity-30" />
+    <section className="relative overflow-hidden bg-[#0c0d10] text-stone-100 border-b border-stone-800/80 pt-10 pb-16 lg:pt-16 lg:pb-20">
+      {/* Ambient background glows */}
+      <div className="absolute inset-0 pointer-events-none opacity-30">
+        <div className="absolute -top-32 -left-32 w-[32rem] h-[32rem] rounded-full bg-emerald-700/20 blur-[120px]" />
+        <div className="absolute top-1/2 -right-32 w-[28rem] h-[28rem] rounded-full bg-emerald-900/25 blur-[120px]" />
+        <div className="absolute bottom-0 left-1/3 w-[24rem] h-[24rem] rounded-full bg-stone-700/10 blur-[100px]" />
       </div>
 
       <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-emerald-300 text-xs md:text-sm font-semibold tracking-wide mb-6">
-            <span className="text-base">🍉</span>
-            <span>Offizieller FreeFalastin Shop</span>
-            <span className="text-white/40">•</span>
-            <span className="text-white/80 font-normal">freefalastin.de</span>
-          </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          {/* Left Column: Mission & Statement (7 cols) */}
+          <div className="lg:col-span-7 flex flex-col justify-center">
+            {/* Unboxed clean metadata kicker */}
+            <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold tracking-wide text-emerald-400 uppercase mb-4">
+              <span>🍉 FreeFalastin Community</span>
+              <span aria-hidden="true" className="text-stone-700">·</span>
+              <span>Kleidung mit Haltung</span>
+              <span aria-hidden="true" className="text-stone-700">·</span>
+              <span className="text-stone-300 font-medium">Reale Hilfe</span>
+            </div>
 
-          {/* Headline */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight text-white">
-            Solidarität tragen.{" "}
-            <span className="block mt-1 bg-gradient-to-r from-emerald-400 via-emerald-200 to-white bg-clip-text text-transparent">
-              Hoffnung schenken.
-            </span>
-          </h1>
-
-          {/* Subtitle */}
-          <p className="mt-6 text-base sm:text-lg md:text-xl text-neutral-300 max-w-2xl mx-auto leading-relaxed font-normal">
-            Traditionell gewebte Kufiyas, faire Bio-Mode, Accessoires und Kunsthandwerk.
-            <span className="text-emerald-400 font-semibold block mt-1">
-              Jeder Kauf unterstützt Hilfsprojekte für Palästina.
-            </span>
-          </p>
-
-          {/* Call to action buttons */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-            <Button
-              size="lg"
-              className="bg-[#005c2e] hover:bg-[#00733a] text-white px-8 py-6 text-base font-bold shadow-lg shadow-emerald-950/50 hover:shadow-emerald-900/40 transition-all rounded-xl gap-2"
-              asChild
+            {/* Display Headline */}
+            <h1
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-white leading-[1.12]"
+              style={{ textWrap: "balance" }}
             >
-              <Link href={`${basePath}/products`}>
-                <span>Jetzt Kollektion entdecken</span>
-                <ArrowRight className="size-5" />
-              </Link>
-            </Button>
+              Solidarität tragen.{" "}
+              <span className="block text-emerald-400 mt-1">
+                Ein klares Zeichen setzen.
+              </span>
+            </h1>
 
-            <Button
-              variant="ghost"
-              size="lg"
-              className="text-neutral-300 hover:text-white hover:bg-white/5 px-4 py-6 text-sm font-medium gap-1.5"
-              asChild
-            >
-              <a
-                href="https://blog.freefalastin.de"
-                target="_blank"
-                rel="noopener noreferrer"
+            {/* Grounded Subheadline without marketing hype */}
+            <p className="mt-5 text-base sm:text-lg text-stone-300 max-w-2xl leading-relaxed">
+              Streetwear, traditionelle Kufiyas und Accessoires für alle, die im Alltag Haltung zeigen. Mit jedem Piece setzt du ein sichtbares Statement und unterstützt gleichzeitig ganz konkret Hilfsprojekte für Palästina – direkt, unkompliziert und als selbstverständlicher Teil unserer Community.
+            </p>
+
+            {/* CTAs */}
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <Button
+                size="lg"
+                className="bg-[#005c2e] hover:bg-[#00783c] text-white px-8 py-6 text-base font-semibold shadow-lg shadow-emerald-950/60 hover:shadow-emerald-900/80 transition-all rounded-xl gap-2"
+                asChild
               >
-                <span>Zum Blog</span>
-                <ExternalLink className="size-4 opacity-70" />
-              </a>
-            </Button>
+                <Link href={`${basePath}/products`}>
+                  <span>Kollektion entdecken</span>
+                  <ArrowRight className="size-4" />
+                </Link>
+              </Button>
+
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-white/20 bg-white/5 hover:bg-white/10 text-stone-100 hover:text-white px-6 py-6 text-sm font-medium rounded-xl transition-colors backdrop-blur-sm gap-1.5"
+                asChild
+              >
+                <Link href={`${basePath}/products?category=kufiya`}>
+                  <span>Kufiyas &amp; Schals</span>
+                </Link>
+              </Button>
+            </div>
+
+            {/* Grounded Authentic Pillars */}
+            <div className="mt-10 pt-8 border-t border-stone-800/80 grid grid-cols-1 sm:grid-cols-3 gap-6 text-stone-300">
+              <div className="flex items-start gap-3">
+                <Sparkles className="size-5 text-emerald-400 shrink-0 mt-0.5" />
+                <div>
+                  <div className="text-xs font-bold text-white uppercase tracking-wider">
+                    Sichtbares Zeichen
+                  </div>
+                  <div className="text-xs text-stone-400 mt-1 leading-snug">
+                    Haltung &amp; Zusammenhalt im Alltag zeigen
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <Heart className="size-5 text-emerald-400 shrink-0 mt-0.5" />
+                <div>
+                  <div className="text-xs font-bold text-white uppercase tracking-wider">
+                    Direkte Hilfe
+                  </div>
+                  <div className="text-xs text-stone-400 mt-1 leading-snug">
+                    Unterstützung für konkrete Hilfsprojekte
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <Truck className="size-5 text-emerald-400 shrink-0 mt-0.5" />
+                <div>
+                  <div className="text-xs font-bold text-white uppercase tracking-wider">
+                    Schneller Versand
+                  </div>
+                  <div className="text-xs text-stone-400 mt-1 leading-snug">
+                    Zuverlässig direkt zu dir nach Hause
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Quick stats / Highlights */}
-          <div className="mt-12 pt-8 border-t border-white/10 grid grid-cols-2 md:grid-cols-3 gap-6 text-center">
-            <div>
-              <div className="text-2xl sm:text-3xl font-black text-emerald-400">🍉</div>
-              <div className="text-xs sm:text-sm text-neutral-400 mt-0.5">Mit Haltung</div>
-            </div>
-            <div>
-              <div className="text-2xl sm:text-3xl font-black text-white">Hebron</div>
-              <div className="text-xs sm:text-sm text-neutral-400 mt-0.5">Originale Kufiya-Webung</div>
-            </div>
-            <div className="col-span-2 md:col-span-1">
-              <div className="text-2xl sm:text-3xl font-black text-emerald-400">DE & EU</div>
-              <div className="text-xs sm:text-sm text-neutral-400 mt-0.5">Schneller Versand</div>
-            </div>
+          {/* Right Column: Hero Video Player Montage (5 cols) */}
+          <div className="lg:col-span-5">
+            <HeroVideoPlayer />
           </div>
         </div>
       </div>

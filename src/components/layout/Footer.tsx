@@ -43,71 +43,99 @@ export async function Footer({ basePath, locale, categoryLinks }: FooterProps) {
   const wholesaleEnabled = isWholesaleEnabled();
 
   return (
-    <footer className="bg-primary text-gray-300">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-5">
-          {/* Brand */}
-          <div className="col-span-1 md:col-span-2">
-            <span className="text-xl font-bold text-white">{storeName}</span>
-            <p className="mt-4 text-sm text-neutral-400">
+    <footer className="bg-[#071d12] text-stone-300 border-t border-emerald-950/80">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12 pb-12 border-b border-white/10">
+          {/* Brand & Mission Column (5 cols) */}
+          <div className="md:col-span-5">
+            <Link href={basePath || "/"} className="inline-block text-xl font-bold tracking-tight text-white mb-3">
+              {storeName}
+            </Link>
+            <p className="text-sm text-stone-400 max-w-sm leading-relaxed mb-6">
               {t("description") || storeDescription}
             </p>
-            <div className="mt-4 flex flex-col gap-2">
+
+            <div className="flex flex-col gap-2.5 text-xs">
               <a
                 href="https://blog.freefalastin.de"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-emerald-400 hover:text-emerald-300 transition-colors font-semibold inline-flex items-center gap-1"
+                className="text-emerald-400 hover:text-emerald-300 transition-colors font-semibold inline-flex items-center gap-1.5"
               >
-                <span>🍉 Blog: blog.freefalastin.de</span> &rarr;
+                <span>🍉 Zum FreeFalastin Blog</span>
+                <span aria-hidden="true">&rarr;</span>
               </a>
               <a
                 href="https://blog.freefalastin.de/mission"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-neutral-300 hover:text-white transition-colors"
+                className="text-stone-300 hover:text-white transition-colors inline-flex items-center gap-1.5"
               >
-                ❤️ Spenden & Hilfsprojekte
+                <span>❤️ Hilfsprojekte &amp; Spendenberichte</span>
               </a>
               <a
                 href="https://blog.freefalastin.de/about"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-neutral-400 hover:text-neutral-200 transition-colors"
+                className="text-stone-400 hover:text-stone-200 transition-colors inline-flex items-center gap-1.5"
               >
-                📖 Über unsere Initiative
+                <span>📖 Über die Initiative</span>
               </a>
             </div>
           </div>
 
-          {/* Links */}
-          <div>
-            <h3 className="text-sm font-medium text-neutral-300">
-              {t("shop")}
+          {/* Shop Links (2 cols) */}
+          <div className="md:col-span-2">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-emerald-400 mb-4">
+              {t("shop") || "Kollektionen"}
             </h3>
-            <ul className="mt-4 space-y-3">
+            <ul className="space-y-2.5 text-sm">
               <li>
                 <Link
                   href={`${basePath}/products`}
-                  className="text-sm text-neutral-400 hover:text-neutral-200 transition-colors"
+                  className="text-stone-400 hover:text-white transition-colors"
                 >
-                  {t("allProducts")}
+                  {t("allProducts") || "Alle Produkte"}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`${basePath}/products?category=kufiya`}
+                  className="text-stone-400 hover:text-white transition-colors"
+                >
+                  Kufiyas &amp; Schals
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`${basePath}/products?category=clothing`}
+                  className="text-stone-400 hover:text-white transition-colors"
+                >
+                  Hoodies &amp; Shirts
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`${basePath}/products?category=accessories`}
+                  className="text-stone-400 hover:text-white transition-colors"
+                >
+                  Accessoires &amp; Pins
                 </Link>
               </li>
               {categoryLinks}
             </ul>
           </div>
 
-          {/* Account */}
-          <div>
-            <h3 className="text-sm font-medium text-neutral-300">
-              {t("account")}
+          {/* Account & Service (2 cols) */}
+          <div className="md:col-span-2">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-emerald-400 mb-4">
+              {t("account") || "Kundenservice"}
             </h3>
-            <ul className="mt-4 space-y-3">
+            <ul className="space-y-2.5 text-sm">
               <li>
                 <Link
                   href={`${basePath}/account`}
-                  className="text-sm text-neutral-400 hover:text-neutral-200 transition-colors"
+                  className="text-stone-400 hover:text-white transition-colors"
                 >
                   {t("myAccount")}
                 </Link>
@@ -115,7 +143,7 @@ export async function Footer({ basePath, locale, categoryLinks }: FooterProps) {
               <li>
                 <Link
                   href={`${basePath}/account/orders`}
-                  className="text-sm text-neutral-400 hover:text-neutral-200 transition-colors"
+                  className="text-stone-400 hover:text-white transition-colors"
                 >
                   {t("orderHistory")}
                 </Link>
@@ -123,7 +151,7 @@ export async function Footer({ basePath, locale, categoryLinks }: FooterProps) {
               <li>
                 <Link
                   href={`${basePath}/cart`}
-                  className="text-sm text-neutral-400 hover:text-neutral-200 transition-colors"
+                  className="text-stone-400 hover:text-white transition-colors"
                 >
                   {t("cart")}
                 </Link>
@@ -132,7 +160,7 @@ export async function Footer({ basePath, locale, categoryLinks }: FooterProps) {
                 <li>
                   <Link
                     href={`${basePath}/wholesale`}
-                    className="text-sm text-neutral-400 hover:text-neutral-200 transition-colors"
+                    className="text-stone-400 hover:text-white transition-colors"
                   >
                     {t("wholesale")}
                   </Link>
@@ -141,30 +169,45 @@ export async function Footer({ basePath, locale, categoryLinks }: FooterProps) {
             </ul>
           </div>
 
-          {/* Policies */}
-          <div>
-            <h3 className="text-sm font-medium text-neutral-300">
-              {t("policies")}
+          {/* Policies & Trust (3 cols) */}
+          <div className="md:col-span-3">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-emerald-400 mb-4">
+              {t("policies") || "Rechtliches"}
             </h3>
-            <ul className="mt-4 space-y-3">
+            <ul className="space-y-2.5 text-sm">
               {POLICY_LINKS.map((policy) => (
                 <li key={policy.slug}>
                   <Link
                     href={`${basePath}/policies/${policy.slug}`}
-                    className="text-sm text-neutral-400 hover:text-neutral-200 transition-colors"
+                    className="text-stone-400 hover:text-white transition-colors"
                   >
                     {tp(policy.nameKey)}
                   </Link>
                 </li>
               ))}
             </ul>
+
+            <div className="mt-6 pt-4 border-t border-white/5">
+              <div className="text-[11px] font-medium text-stone-400 uppercase tracking-wider mb-2">
+                Sichere Zahlung &amp; Expressversand
+              </div>
+              <p className="text-xs text-stone-500 leading-relaxed">
+                SSL-Verschlüsselung, VISA, Mastercard, PayPal, Klarna &amp; Apple Pay.
+              </p>
+            </div>
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-neutral-800 text-xs text-neutral-400 text-center">
+        {/* Bottom Bar */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-400">
           <p>
             &copy; <CurrentYear /> {storeName}. Solidarität tragen &amp; Hoffnung schenken.
           </p>
+          <div className="flex items-center gap-4 text-stone-400">
+            <span>Zuverlässiger Versand</span>
+            <span aria-hidden="true">·</span>
+            <span>Gemeinschaft &amp; Hilfe</span>
+          </div>
         </div>
       </div>
     </footer>

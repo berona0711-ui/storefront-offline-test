@@ -1,4 +1,4 @@
-﻿import type { Category } from "@spree/sdk";
+import type { Category } from "@spree/sdk";
 import Link from "next/link";
 import { connection } from "next/server";
 import { cache, Suspense } from "react";
@@ -147,20 +147,30 @@ export default async function StorefrontLayout({
 
   return (
     <>
-      <div className="bg-[#005c2e] text-white text-xs sm:text-sm py-2 px-4 text-center font-medium tracking-wide flex items-center justify-center gap-2 border-b border-emerald-900 shadow-inner">
-        <span className="text-base">🍉</span>
-        <span>
-          <strong>FreeFalastin Shop</strong> – Mode, Kufiyas & Kunst für Palästina.
-        </span>
-        <a
-          href="https://blog.freefalastin.de"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="underline hover:text-emerald-200 font-bold ml-1 transition-colors inline-flex items-center gap-0.5"
-        >
-          Zum Blog blog.freefalastin.de &rarr;
-        </a>
-      </div>
+      <aside
+        aria-label="Ankündigung"
+        className="bg-[#0b2416] text-emerald-100/90 text-xs py-2 px-4 border-b border-emerald-950/80 font-medium tracking-wide"
+      >
+        <div className="container mx-auto flex items-center justify-center gap-3 text-center flex-wrap">
+          <span className="inline-flex items-center gap-1.5 font-semibold text-white">
+            <span aria-hidden="true">🍉</span>
+            <span>FreeFalastin Shop</span>
+          </span>
+          <span className="hidden sm:inline text-emerald-500/60" aria-hidden="true">·</span>
+          <span className="text-emerald-100/80">
+            Kleidung mit Haltung. Jeder Kauf unterstützt Hilfsprojekte für Palästina.
+          </span>
+          <span className="hidden md:inline text-emerald-500/60" aria-hidden="true">·</span>
+          <a
+            href="https://blog.freefalastin.de"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-emerald-300 hover:text-white transition-colors underline underline-offset-4 font-medium inline-flex items-center gap-1"
+          >
+            Blog & Spendenberichte &rarr;
+          </a>
+        </div>
+      </aside>
       <Header
         basePath={basePath}
         locale={locale as Locale}

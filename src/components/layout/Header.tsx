@@ -75,37 +75,62 @@ export async function Header({
       basePath={basePath}
       left={mobileNavigation}
       center={
-        <Link href={basePath || "/"} className="flex items-center min-w-0">
+        <Link href={basePath || "/"} className="flex items-center min-w-0 py-1">
           <Image
             src="/freefalastin-logo.svg"
             alt={storeName}
-            width={180}
-            height={40}
-            className="max-w-full object-contain"
-            style={{ width: "auto", height: "auto" }}
+            width={160}
+            height={38}
+            className="max-w-full object-contain h-8 sm:h-9 w-auto"
             fetchPriority="high"
             loading="eager"
           />
         </Link>
       }
-      rightStart={
-        <div className="hidden lg:flex lg:items-center lg:gap-2">
+      navLinks={
+        <>
+          <Link
+            href={`${basePath}/products`}
+            className="text-stone-700 hover:text-[#005c2e] transition-colors whitespace-nowrap shrink-0 hover:underline hover:underline-offset-4 decoration-emerald-600"
+          >
+            {t("allProducts") || "Alle Produkte"}
+          </Link>
+          <Link
+            href={`${basePath}/products?category=kufiya`}
+            className="text-stone-700 hover:text-[#005c2e] transition-colors whitespace-nowrap shrink-0 hover:underline hover:underline-offset-4 decoration-emerald-600"
+          >
+            Kufiyas &amp; Schals
+          </Link>
+          <Link
+            href={`${basePath}/products?category=clothing`}
+            className="text-stone-700 hover:text-[#005c2e] transition-colors whitespace-nowrap shrink-0 hover:underline hover:underline-offset-4 decoration-emerald-600"
+          >
+            Hoodies &amp; Shirts
+          </Link>
+          <Link
+            href={`${basePath}/products?category=accessories`}
+            className="text-stone-700 hover:text-[#005c2e] transition-colors whitespace-nowrap shrink-0 hover:underline hover:underline-offset-4 decoration-emerald-600"
+          >
+            Accessoires &amp; Pins
+          </Link>
           <a
-            href="https://blog.freefalastin.de"
+            href="https://blog.freefalastin.de/mission"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 rounded-full border border-emerald-200 transition-colors"
+            className="text-stone-700 hover:text-[#005c2e] transition-colors whitespace-nowrap shrink-0 hover:underline hover:underline-offset-4 decoration-emerald-600 inline-flex items-center gap-1"
           >
-            <span>🍉 Blog</span>
-            <span className="text-neutral-400">|</span>
-            <span className="text-neutral-600 font-normal">freefalastin.de ↗</span>
+            <span>Über die Mission</span>
+            <span className="text-xs text-stone-400">↗</span>
           </a>
-          {/* Trade portal entry point — understated, secondary to the catalog nav.
-              Only shown when the wholesale addon is enabled. */}
+        </>
+      }
+      rightStart={
+        <div className="flex items-center gap-2">
+          {/* Trade portal entry point */}
           {wholesaleEnabled && (
             <Link
               href={`${basePath}/wholesale`}
-              className="px-2 py-1.5 text-sm text-gray-500 hover:text-gray-900 transition-colors whitespace-nowrap"
+              className="hidden lg:inline-flex px-2.5 py-1 text-xs font-semibold text-slate-600 hover:text-slate-900 border border-slate-200 rounded-md hover:bg-slate-50 transition-colors whitespace-nowrap"
             >
               {t("wholesale")}
             </Link>
@@ -117,7 +142,12 @@ export async function Header({
         <>
           {/* Account - desktop only */}
           <div className="hidden md:block">
-            <Button variant="ghost" size="icon-lg" asChild>
+            <Button
+              variant="ghost"
+              size="icon-lg"
+              className="text-stone-700 hover:text-stone-900 hover:bg-stone-100/80 rounded-full"
+              asChild
+            >
               <Link href={`${basePath}/account`} aria-label={t("account")}>
                 <User className="size-5" />
               </Link>

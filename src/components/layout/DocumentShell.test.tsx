@@ -3,19 +3,13 @@ import { DocumentShell } from "./DocumentShell";
 
 vi.mock("next/font/google", () => ({
   Geist: () => ({ variable: "--font-geist" }),
+  Plus_Jakarta_Sans: () => ({ variable: "--font-display" }),
 }));
 
 vi.mock("@next/third-parties/google", () => ({
   GoogleTagManager: () => null,
 }));
 
-vi.mock("@vercel/analytics/next", () => ({
-  Analytics: () => null,
-}));
-
-vi.mock("@vercel/speed-insights/next", () => ({
-  SpeedInsights: () => null,
-}));
 
 describe("DocumentShell", () => {
   it("renders the route locale and tolerates extension root mutations", () => {

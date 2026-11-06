@@ -54,60 +54,62 @@ export const ProductCard = memo(function ProductCard({
   };
 
   return (
-    <div className="group relative">
+    <div className="group relative bg-white rounded-3xl border border-stone-200/90 shadow-xs hover:shadow-xl hover:border-emerald-600/50 transition-all duration-500 overflow-hidden flex flex-col h-full hover:-translate-y-1.5">
       {/* Image */}
-      <div className="relative aspect-square bg-gray-100 rounded-md overflow-hidden">
+      <div className="relative aspect-square bg-[#f5f2eb]/70 overflow-hidden">
         <ProductImage
           src={imageUrl}
           alt={product.name}
           fill
-          className="object-cover group-hover:scale-105 transition-transform duration-300"
-          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 300px"
-          iconClassName="w-16 h-16"
+          className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 280px"
+          iconClassName="w-16 h-16 opacity-40 text-stone-400"
           fetchPriority={fetchPriority}
         />
         {onSale && (
-          <span className="absolute top-2 left-2 bg-red-500 text-white text-xs font-medium px-2 py-1 rounded">
+          <span className="absolute top-2.5 left-2.5 bg-[#0b2416] text-emerald-300 text-[10px] font-bold tracking-wider uppercase px-2 py-0.5 rounded-xs shadow-xs">
             {t("sale")}
           </span>
         )}
       </div>
 
       {/* Content */}
-      <div className="p-4">
-        <h3 className="text-sm font-medium text-gray-900 group-hover:text-primary transition-colors line-clamp-2">
-          {/* Stretched link: the ::after overlay keeps the whole card clickable
-              without wrapping the content in an <a> — HiddenPricePrompt renders
-              its own link, and anchors can't nest. */}
-          <Link
-            href={`${basePath}/products/${product.slug}${categoryId ? `?category_id=${categoryId}` : ""}`}
-            className="after:absolute after:inset-0"
-            onClick={handleClick}
-          >
-            {product.name}
-          </Link>
-        </h3>
-
-        <div className="mt-2 flex items-center gap-2">
-          {displayPrice ? (
-            <span className="text-lg font-semibold text-gray-900">
-              {displayPrice}
-            </span>
-          ) : (
-            // Null price: a deliberate hide inside a HiddenPricingProvider
-            // (renders a sign-in prompt), otherwise renders nothing.
-            <HiddenPricePrompt />
-          )}
-          {onSale && strikethroughPrice && (
-            <span className="text-sm text-gray-500 line-through">
-              {strikethroughPrice}
-            </span>
-          )}
+      <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
+        <div>
+          <h3 className="text-sm font-semibold text-stone-900 group-hover:text-[#005c2e] transition-colors line-clamp-2 leading-snug">
+            {/* Stretched link: the ::after overlay keeps the whole card clickable
+                without wrapping the content in an <a> — HiddenPricePrompt renders
+                its own link, and anchors can't nest. */}
+            <Link
+              href={`${basePath}/products/${product.slug}${categoryId ? `?category_id=${categoryId}` : ""}`}
+              className="after:absolute after:inset-0"
+              onClick={handleClick}
+            >
+              {product.name}
+            </Link>
+          </h3>
         </div>
 
-        {!product.purchasable && (
-          <span className="mt-2 text-sm text-gray-500">{t("outOfStock")}</span>
-        )}
+        <div className="mt-3 pt-3 border-t border-stone-100 flex items-baseline justify-between gap-2 flex-wrap">
+          <div className="flex items-baseline gap-2">
+            {displayPrice ? (
+              <span className="text-base font-bold text-stone-900 tabular-nums">
+                {displayPrice}
+              </span>
+            ) : (
+              <HiddenPricePrompt />
+            )}
+            {onSale && strikethroughPrice && (
+              <span className="text-xs text-stone-400 line-through tabular-nums">
+                {strikethroughPrice}
+              </span>
+            )}
+          </div>
+
+          {!product.purchasable && (
+            <span className="text-xs text-stone-400">{t("outOfStock")}</span>
+          )}
+        </div>
       </div>
     </div>
   );

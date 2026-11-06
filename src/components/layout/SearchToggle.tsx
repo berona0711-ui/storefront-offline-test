@@ -25,6 +25,8 @@ interface SearchToggleProps {
   left: ReactNode;
   /** Center slot (e.g. logo) */
   center: ReactNode;
+  /** Navigation links for desktop */
+  navLinks?: ReactNode;
   /** Rendered before the search button in the right section */
   rightStart: ReactNode;
   /** Rendered after the search button in the right section */
@@ -35,6 +37,7 @@ export function SearchToggle({
   basePath,
   left,
   center,
+  navLinks,
   rightStart,
   rightEnd,
 }: SearchToggleProps) {
@@ -48,7 +51,7 @@ export function SearchToggle({
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-gray-200 h-16 relative">
+    <header className="sticky top-0 z-50 bg-[#faf9f6]/95 backdrop-blur-md border-b border-stone-200/80 h-18 relative transition-colors">
       {/* Normal header content */}
       <div
         className={`absolute inset-0 transition-all duration-300 ease-in-out ${
@@ -58,15 +61,25 @@ export function SearchToggle({
         }`}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full">
-          <div className="flex items-center h-full w-full">
-            {/* Left section */}
-            <div className="flex items-center flex-1">{left}</div>
+          <div className="flex items-center justify-between gap-6 h-full w-full">
+            {/* Zone 1: Mobile toggle + Brand */}
+            <div className="flex items-center gap-3 shrink-0 min-w-0">
+              <div className="lg:hidden">{left}</div>
+              {center}
+            </div>
 
-            {/* Center section */}
-            <div className="flex justify-center min-w-0">{center}</div>
+            {/* Zone 2: Desktop Navigation Links */}
+            {navLinks && (
+              <nav
+                aria-label="Hauptnavigation"
+                className="hidden lg:flex items-center gap-7 text-sm font-medium text-stone-700 whitespace-nowrap"
+              >
+                {navLinks}
+              </nav>
+            )}
 
-            {/* Right section */}
-            <div className="flex items-center flex-1 justify-end space-x-2">
+            {/* Zone 3: Functional Actions */}
+            <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
               {rightStart}
 
               {/* Search toggle */}
@@ -74,6 +87,7 @@ export function SearchToggle({
                 ref={searchTriggerRef}
                 variant="ghost"
                 size="icon-lg"
+                className="text-stone-700 hover:text-stone-900 hover:bg-stone-100/80 rounded-full"
                 onClick={() => setSearchOpen(true)}
                 aria-label={t("openSearch")}
                 aria-expanded={searchOpen}

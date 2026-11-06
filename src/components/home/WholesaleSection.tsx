@@ -46,9 +46,9 @@ export async function WholesaleSection({
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
           {/* Pitch + CTAs */}
           <div>
-            <span className="inline-flex items-center rounded-full bg-slate-800 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-300">
+            <div className="text-xs font-semibold uppercase tracking-wider text-emerald-400 mb-2">
               {t("wholesaleBadge")}
-            </span>
+            </div>
             <h2 className="mt-4 text-2xl font-bold text-white">
               {t("wholesaleTitle")}
             </h2>

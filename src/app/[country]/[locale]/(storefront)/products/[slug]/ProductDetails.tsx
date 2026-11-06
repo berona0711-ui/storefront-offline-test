@@ -198,6 +198,7 @@ export function ProductDetails({ product, basePath }: ProductDetailsProps) {
                 {/* Add to Cart Button */}
                 <Button
                   size="lg"
+                  className="bg-[#005c2e] hover:bg-[#00733a] text-white font-semibold py-6 px-8 rounded-xl shadow-md hover:shadow-lg transition-all flex-1 gap-2 text-base"
                   onClick={handleAddToCart}
                   disabled={loading || !isPurchasable}
                 >
@@ -217,6 +218,31 @@ export function ProductDetails({ product, basePath }: ProductDetailsProps) {
                 </Button>
               </div>
             )}
+
+            {/* Purchase Trust & Delivery Guarantee */}
+            <div className="mt-8 rounded-xl border border-stone-200/80 bg-stone-50/80 p-4.5 space-y-2.5 text-xs text-stone-700">
+              <div className="flex items-center gap-2.5">
+                <span className="text-base">🍉</span>
+                <div>
+                  <strong className="text-stone-900">Sichtbare Solidarität: </strong>
+                  <span>Kleidung und Accessoires, die ein klares Zeichen setzen.</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <span className="text-base">❤️</span>
+                <div>
+                  <strong className="text-stone-900">Echte Hilfe: </strong>
+                  <span>Jeder Einkauf unterstützt konkrete Hilfsprojekte für Palästina.</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <span className="text-base">📦</span>
+                <div>
+                  <strong className="text-stone-900">Schneller Versand: </strong>
+                  <span>Zuverlässige Lieferung direkt zu dir nach Hause.</span>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Description */}
